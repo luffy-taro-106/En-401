@@ -1,0 +1,109 @@
+SETS:
+  REGION:
+    type: set
+    dtype: str
+  FUEL:
+    type: set
+    dtype: str
+  TIMESLICE:
+    type: set
+    dtype: str
+  YEAR:
+    type: set
+    dtype: int
+  TECHNOLOGY:
+    type: set
+    dtype: str
+  MODE_OF_OPERATION:
+    type: set
+    dtype: int
+  EMISSION:
+    type: set
+    dtype: str
+
+PARAMETERS:
+  YearSplit:
+    type: param
+    dtype: float
+    indices: [TIMESLICE, YEAR]
+
+  DiscountRate:
+    type: param
+    dtype: float
+    indices: [REGION]
+
+  AccumulatedAnnualDemand:
+    type: param
+    dtype: float
+    indices: [REGION, FUEL, YEAR]
+
+  CapacityFactor:
+    type: param
+    dtype: float
+    indices: [REGION, TECHNOLOGY, TIMESLICE, YEAR]
+
+  OperationalLife:
+    type: param
+    dtype: float
+    indices: [REGION, TECHNOLOGY]
+
+  ResidualCapacity:
+    type: param
+    dtype: float
+    indices: [REGION, TECHNOLOGY, YEAR]
+
+  InputActivityRatio:
+    type: param
+    dtype: float
+    indices: [REGION, TECHNOLOGY, FUEL, MODE_OF_OPERATION, YEAR]
+
+  OutputActivityRatio:
+    type: param
+    dtype: float
+    indices: [REGION, TECHNOLOGY, FUEL, MODE_OF_OPERATION, YEAR]
+
+  CapitalCost:
+    type: param
+    dtype: float
+    indices: [REGION, TECHNOLOGY, YEAR]
+
+  FixedCost:
+    type: param
+    dtype: float
+    indices: [REGION, TECHNOLOGY, YEAR]
+
+  VariableCost:
+    type: param
+    dtype: float
+    indices: [REGION, TECHNOLOGY, MODE_OF_OPERATION, YEAR]
+
+  EmissionActivityRatio:
+    short_name: EmActRatio
+    type: param
+    dtype: float
+    indices: [REGION, TECHNOLOGY, EMISSION, MODE_OF_OPERATION, YEAR]
+
+  EmissionsPenalty:
+    type: param
+    dtype: float
+    indices: [REGION, EMISSION, YEAR]
+
+  TotalTechnologyAnnualActivityLowerLimit:
+    short_name: TTActLow
+    type: param
+    dtype: float
+    indices: [REGION, TECHNOLOGY, YEAR]
+
+  TotalTechnologyAnnualActivityUpperLimit:
+    short_name: TTActUp
+    type: param
+    dtype: float
+    indices: [REGION, TECHNOLOGY, YEAR]
+
+  TotalTechnologyModelPeriodActivityUpperLimit:
+    short_name: TTModPerUp
+    type: param
+    dtype: float
+    indices: [REGION, TECHNOLOGY]
+
+RESULTS: {}
